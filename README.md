@@ -677,7 +677,7 @@ https://172.172.1.244:9090
 Source code được quản lý tập trung trên GitHub:
 
 ```text
-https://github.com/<GITHUB_USERNAME>/<REPOSITORY>
+https://github.com/<GITHUB_USERNAME>/<REPOSITORY>](https://github.com/Vinh-all/smartBilling.git
 ```
 
 GitHub Repository bao gồm:
