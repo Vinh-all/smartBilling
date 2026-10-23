@@ -661,13 +661,13 @@ docker compose logs backend
 ### Kiểm tra website
 
 ```text
-http://<SERVER_IP>
+https://172.172.1.244:8443
 ```
 
 ### Kiểm tra Prometheus
 
 ```text
-http://<SERVER_IP>:9090
+https://172.172.1.244:9090
 ```
 
 ---
@@ -691,17 +691,4 @@ GitHub Repository bao gồm:
 - README documentation
 
 ---
-
-## 21. Thông tin sinh viên
-
-**Họ và tên:** <HỌ VÀ TÊN>
-
-**Mã sinh viên:** <MSSV>
-
-**GitHub:** <GITHUB_USERNAME>
-
-**Dự án:** SmartBilling
-
-**Môi trường phát triển:** Windows
-
-**Môi trường triển khai:** Ubuntu Linux
+The End
