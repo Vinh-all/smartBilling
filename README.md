@@ -375,7 +375,7 @@ Windows Development
 Trên Ubuntu:
 
 ```bash
-git clone <GITHUB_REPOSITORY_URL>
+git clone 
 cd SmartBilling
 ```
 
@@ -479,7 +479,7 @@ sudo systemctl status nginx
 
 ---
 
-## 14. Monitoring với Prometheus
+## 14. Webdeployy với Prometheus
 
 Prometheus được sử dụng để theo dõi và thu thập metrics của hệ thống.
 
@@ -504,7 +504,7 @@ docker compose logs prometheus
 Nếu Prometheus được cấu hình sử dụng cổng mặc định:
 
 ```text
-http://<SERVER_IP>:9090
+http://192.168.1.131:9090
 ```
 
 ---
