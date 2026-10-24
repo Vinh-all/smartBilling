@@ -197,6 +197,7 @@ backend/src/modules/
 
 Hệ thống sử dụng **PostgreSQL**.
 
+
 Cấu hình kết nối database được thực hiện trong:
 
 ```text
@@ -206,17 +207,16 @@ backend/src/config/database.js
 Ứng dụng hỗ trợ cấu hình thông qua:
 
 ```env
-DATABASE_URL=
 ```
 
 hoặc các biến:
 
 ```env
-DB_HOST=
-DB_PORT=
-DB_NAME=
-DB_USER=
-DB_PASSWORD=
+DB_HOST=localhost
+DB_PORT=5432
+DB_NAME=postgres
+DB_USER=postgres
+DB_PASSWORD=070706
 ```
 
 ### Lưu ý bảo mật
@@ -299,6 +299,11 @@ Di chuyển vào thư mục backend:
 ```bash
 cd backend
 ```
+Kiểm tra database trên ubuntu:
+docker exec -it website-deploy-postgres-1 \
+psql -U postgres -d postgres
+- Xem chi tiết dữ liệu trong bảng:
+  SELECT * FROM <bảng>;
 
 Cài đặt dependencies:
 
@@ -417,7 +422,7 @@ docker compose logs
 Xem log của từng service:
 
 ```bash
-docker compose logs <service-name>
+docker compose logs 
 ```
 
 Dừng hệ thống:
@@ -479,7 +484,7 @@ sudo systemctl status nginx
 
 ---
 
-## 14. Webdeployy với Prometheus
+## 14. Website-deplloy với Prometheus
 
 Prometheus được sử dụng để theo dõi và thu thập metrics của hệ thống.
 
@@ -661,12 +666,14 @@ docker compose logs backend
 ### Kiểm tra website
 
 ```text
+curl -k -I https://localhost:8443/
 https://172.172.1.244:8443
 ```
 
 ### Kiểm tra Prometheus
 
 ```text
+ curl -I http://localhost:9090/
 https://172.172.1.244:9090
 ```
 
