@@ -526,6 +526,13 @@ http://192.168.1.131:9090
 ```
 
 ---
+-Lệnh xem truy vân các log
+-xem toàn bộ
+{job="docker"}
+-Xem theo container
+{job="docker", container="website-deploy-nginx-1"}
+-Xem website
+{job="docker", container="website-deploy-smartbilling-web-1"}
 
 ## 15. Cập nhật hệ thống
 
