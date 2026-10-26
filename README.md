@@ -302,6 +302,8 @@ cd backend
 Kiểm tra database trên ubuntu:
 docker exec -it website-deploy-postgres-1 \
 psql -U postgres -d postgres
+
+-docker exec -it website-deploy-postgres-1 psql -U postgres -d postgres
 - Xem chi tiết dữ liệu trong bảng:
   SELECT * FROM <bảng>;
 
