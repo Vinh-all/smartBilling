@@ -394,6 +394,17 @@ cd smartBilling
 ---
 
 ## 12. Triển khai bằng Docker Compose
+-Triển khai thay đổi ip qua nginx:
+
+cd  ~/website-deploy
+
+nano ~/website-deploy/nginx/default.conf
+
+docker compose restart nginx
+
+docker compose exec nginx nginx -t
+
+docker compose exec nginx nginx -s reload
 
 Nếu repository có file:
 
