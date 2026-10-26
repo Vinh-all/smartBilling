@@ -1,0 +1,73 @@
+
+# HTTP cho SmartBilling
+server {
+    listen 80;
+    server_name localhost 192.168.159.129 _;
+
+    location /api/ {
+        proxy_pass http://smartbilling-api:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_connect_timeout 10s;
+        proxy_read_timeout 60s;
+    }
+
+    location / {
+        proxy_pass http://smartbilling-web:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_connect_timeout 10s;
+        proxy_read_timeout 60s;
+    }
+}
+
+# Endpoint cho Nginx Exporter
+server {
+    listen 8081;
+    server_name _;
+
+    location = /stub_status {
+        stub_status;
+        allow 172.16.0.0/12;
+        allow 192.168.0.0/16;
+        deny all;
+    }
+
+    location / {
+        return 404;
+    }
+}
+
+# HTTPS cho SmartBilling
+server {
+    listen 443 ssl;
+    server_name localhost 192.168.159.129 _;
+
+    ssl_certificate /etc/nginx/certs/smartbilling.crt;
+    ssl_certificate_key /etc/nginx/certs/smartbilling.key;
+    ssl_protocols TLSv1.2 TLSv1.3;
+
+    location /api/ {
+        proxy_pass http://smartbilling-api:3000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_connect_timeout 10s;
+        proxy_read_timeout 60s;
+    }
+
+    location / {
+        proxy_pass http://smartbilling-web:80;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto https;
+        proxy_connect_timeout 10s;
+        proxy_read_timeout 60s;
+    }
+}
