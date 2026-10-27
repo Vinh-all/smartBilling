@@ -302,6 +302,10 @@ psql -U postgres -d postgres
 
 Cài đặt dependencies:
 
+Xem Cấu hình tự ky ssl:
+docker compose exec nginx nginx -T
+-openssl s_client -connect localhost:8443 -showcerts </dev/null 2>/dev/null | openssl x509 -noout -subject -issuer -dates
+
 ```bash
 npm install
 ```
